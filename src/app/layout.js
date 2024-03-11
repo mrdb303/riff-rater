@@ -15,7 +15,7 @@ export default async function RootLayout({ children }) {
   const { userId } = auth();
 
   const profileRes =
-    await sql`SELECT * FROM profiles 
+    await sql`SELECT * FROM rr_profiles 
       WHERE clerk_user_id = ${userId}`;
 
 
@@ -47,7 +47,7 @@ export default async function RootLayout({ children }) {
           </div>
 
         <div>
-     <footer>Copyright: MARD Disc-cuss - Myles Artur Reily Danny &copy;</footer>
+     <footer>Copyright: MARD Disc-cuss - Myles Artur Reily Danny <sup>&copy;</sup></footer>
        </div>
         </body>
       </html>

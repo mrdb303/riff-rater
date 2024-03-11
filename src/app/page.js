@@ -15,8 +15,9 @@ export default async function Home() {
     <div className="homepage">
     <BackPicture />
   <div className="homecontent">
-    <h2>RiffRater by MARD Disc-cuss.</h2>
+    <h2>RiffRater</h2>
      <h3>Reviews you can trust!</h3>
+     <br/>
         <p>RiffRater! This is the only website which allows you to post about your favourite music albums</p>
         <p>You can now post your reviews and recommend tracks You love!</p>
   </div>

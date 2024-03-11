@@ -21,7 +21,7 @@ export default async function Profiles() {
   const {userId} = auth();
   const profiles = await sql `
     SELECT * 
-    FROM profiles`;
+    FROM rr_profiles`;
 
   return (
     <div>

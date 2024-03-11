@@ -13,7 +13,7 @@ export default function Header(){
     <header>
 
     <motion.div initial={{ x: -500, y: 0 }} animate = {{x: 0, y: 0}} >
-      <h1 className="head">🎼 ♪ ♪ ♪ ♫ RiffRater ♫ ♪ ♪ ♪ 🎸 </h1>
+      <h1 className="head">🎼 ♪ ♫ RiffRater ♫ ♪ 🎸 </h1>
     </motion.div>
 
     </header>

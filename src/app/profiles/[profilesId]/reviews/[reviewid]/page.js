@@ -19,9 +19,9 @@ import OutputCoverArt from "@/app/components/OutputCoverArt";
 export default async function SingleReview({ params }) {
     const {userId} = auth();
 
-    const review = await sql`SELECT * FROM reviews WHERE id = ${params.reviewid}`;
-    const comments = await sql`SELECT * FROM comments where review_id = ${params.reviewid} ORDER BY id asc`;
-    const currentUsername = await sql`SELECT username FROM profiles where clerk_user_id = ${userId} `;
+    const review = await sql`SELECT * FROM rr_reviews WHERE id = ${params.reviewid}`;
+    const comments = await sql`SELECT * FROM rr_comments where review_id = ${params.reviewid} ORDER BY id asc`;
+    const currentUsername = await sql`SELECT username FROM rr_profiles where clerk_user_id = ${userId} `;
 
     console.log(review);
 
@@ -30,7 +30,7 @@ export default async function SingleReview({ params }) {
         const username = formData.get("username");
         const content = formData.get("content");
     
-        await sql`INSERT INTO comments 
+        await sql`INSERT INTO rr_comments 
           (username, content, review_id, user_id) 
           VALUES 
           (${username}, ${content}, ${params.reviewid}, ${userId})`;

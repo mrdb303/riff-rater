@@ -17,7 +17,7 @@ export default async function EditReview({ params }) {
   const { userId } = auth();
 
 
-  const review = await sql`SELECT * FROM reviews WHERE id = ${params.reviewid}`;
+  const review = await sql`SELECT * FROM rr_reviews WHERE id = ${params.reviewid}`;
 
   async function handleEditReview(formData) {
     "use server";
@@ -27,7 +27,7 @@ export default async function EditReview({ params }) {
       const album_review = formData.get("album_review");
 
       /*await sql`UPDATE reviews SET album_title = ${album_title},album_artist = ${album_artist}, album_score= ${album_score}, album_review = ${album_review} WHERE user_id = ${userId}`;*/
-      await sql`UPDATE reviews SET album_title = ${album_title},album_artist = ${album_artist}, album_score= ${album_score}, album_review = ${album_review} WHERE id = ${params.reviewid}`;
+      await sql`UPDATE rr_reviews SET album_title = ${album_title},album_artist = ${album_artist}, album_score= ${album_score}, album_review = ${album_review} WHERE id = ${params.reviewid}`;
 
       revalidatePath(`/profiles/${params.profilesId}/reviews${params.reviewid}`); 
       revalidatePath(`/profiles/${params.profilesId}/reviews${params.reviewid}/edit`);

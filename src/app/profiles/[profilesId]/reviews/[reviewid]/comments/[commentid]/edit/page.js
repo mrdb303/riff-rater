@@ -20,16 +20,16 @@ export default async function EditComment({ params }) {
     const { userId } = auth();
 
   const comment =
-    await sql`SELECT * FROM comments WHERE id = ${params.commentid}`;
+    await sql`SELECT * FROM rr_comments WHERE id = ${params.commentid}`;
 
-   const profile = await sql`SELECT * FROM profiles WHERE clerk_user_id = ${userId}`;
+   const profile = await sql`SELECT * FROM rr_profiles WHERE clerk_user_id = ${userId}`;
 
   async function handleEditComment(formData) {
     "use server";
     const username = formData.get("username");
     const content = formData.get("content");
 
-    await sql`UPDATE comments SET username = ${username}, content = ${content} WHERE id = ${params.commentid}`;
+    await sql`UPDATE rr_comments SET username = ${username}, content = ${content} WHERE id = ${params.commentid}`;
     revalidatePath(`/profiles/${params.profilesId}/reviews/${params.reviewid}/comments/${params.commentid}/edit`);
     revalidatePath(`/profiles/${params.profilesId}/reviews/${params.reviewid}`);
     redirect(`/profiles/${params.profilesId}/reviews/${params.reviewid}`);

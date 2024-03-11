@@ -32,17 +32,17 @@ export default async function AllReviews({ params, searchParams }) {
   // Fetch the user's profile
   const profile = await sql `
     SELECT * 
-    FROM profiles 
+    FROM rr_profiles 
     WHERE id = ${params.profilesId}
   `;
 
   // SELECT JOIN query so that data from the profiles and reviews table can be
   // shown. There is a naming conflict, so aliases are used for id's 
   const queryStr = `SELECT album_artist, album_title, album_score, album_review, username, 
-    reviews.id AS review_id, profiles.id AS prof_id, album_image
-    FROM reviews
-    INNER JOIN profiles
-    ON reviews.user_id = profiles.clerk_user_id
+    rr_reviews.id AS review_id, rr_profiles.id AS prof_id, album_image
+    FROM rr_reviews
+    INNER JOIN rr_profiles
+    ON rr_reviews.user_id = rr_profiles.clerk_user_id
     ORDER BY album_score ${sortOrder}, album_title`;
 
   const reviews = await sql.query(queryStr); 

@@ -33,14 +33,14 @@ export default async function ProfilePage({ params }) {
   // Fetch the user's profile
   const profile = await sql `
     SELECT * 
-    FROM profiles 
+    FROM rr_profiles 
     WHERE id = ${params.profilesId}
   `;
 
   // Fetch the user's reviews
   const reviews = await sql `
     SELECT * 
-    FROM reviews 
+    FROM rr_reviews 
     WHERE user_id = ${profile.rows[0].clerk_user_id} 
     ORDER BY id desc
   `;
@@ -54,7 +54,7 @@ export default async function ProfilePage({ params }) {
   
     // Write the data to database on profile edit
     await sql`
-      UPDATE profiles 
+      UPDATE rr_profiles 
       SET username = ${username}, bio = ${bio} 
       WHERE clerk_user_id = ${userId}
     `;
@@ -74,7 +74,7 @@ export default async function ProfilePage({ params }) {
 
     // Write the review into the 'reviews' table
     await sql`
-      INSERT INTO reviews 
+      INSERT INTO rr_reviews 
       (album_title, album_artist, album_score, album_review, user_id) 
       VALUES (${album_title}, ${album_artist}, ${album_score}, ${album_review}, ${userId})
     `;

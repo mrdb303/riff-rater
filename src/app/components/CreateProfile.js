@@ -11,7 +11,7 @@ export default function CreateProfile() {
     const username = formData.get("username");
     const bio = formData.get("bio");
 
-    await sql`INSERT INTO profiles (clerk_user_id, username, bio) VALUES (${userId}, ${username}, ${bio})`;
+    await sql`INSERT INTO rr_profiles (clerk_user_id, username, bio) VALUES (${userId}, ${username}, ${bio})`;
     revalidatePath("/");
     redirect("/");
   }
