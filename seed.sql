@@ -32,6 +32,6 @@ INSERT INTO rr_comments (username, content, review_id, user_id) VALUES
 
 
 /* Image artwork must be in 'public/images' */
-UPDATE reviews
+UPDATE rr_reviews
 SET album_image = 'miller_wild.jpg'
 WHERE id = 2
