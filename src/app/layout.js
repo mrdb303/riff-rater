@@ -47,7 +47,7 @@ export default async function RootLayout({ children }) {
           </div>
 
         <div>
-     <footer>Copyright: MARD Disc-cuss - Myles Artur Reily Danny <sup>&copy;</sup></footer>
+     <footer>Myles Artur Reily Danny <sup>&copy;</sup></footer>
        </div>
         </body>
       </html>

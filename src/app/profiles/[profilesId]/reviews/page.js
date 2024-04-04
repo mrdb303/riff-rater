@@ -152,7 +152,7 @@ export default async function ProfilePage({ params }) {
     <input
       className="rev"
       name="album_artist" 
-      placeholder="Album Title" 
+      placeholder="Album Artist" 
     /><br/><br/>
 
     <label className="rev">Score: </label><br/>
