@@ -20,10 +20,12 @@ export const metadata = {
 
 
 
-export default async function AllReviews({ params, searchParams }) {
+export default async function AllReviews(props) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const {userId} = auth();
 
-  let sortOrder = "desc"; 
+  let sortOrder = "desc";
 
   // if the user has put ?sort=asc, change the sort order
   if (searchParams.sort === "asc") sortOrder = "asc";
@@ -45,9 +47,9 @@ export default async function AllReviews({ params, searchParams }) {
     ON rr_reviews.user_id = rr_profiles.clerk_user_id
     ORDER BY album_score ${sortOrder}, album_title`;
 
-  const reviews = await sql.query(queryStr); 
+  const reviews = await sql.query(queryStr);
 
- 
+
 
 
   // Takes the text of the review and truncates it so that
@@ -107,5 +109,4 @@ export default async function AllReviews({ params, searchParams }) {
     </div>
   </>
   )
-
 }

@@ -13,7 +13,8 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 
-export default async function EditReview({ params }) {
+export default async function EditReview(props) {
+  const params = await props.params;
   const { userId } = auth();
 
 
@@ -36,9 +37,9 @@ export default async function EditReview({ params }) {
   }
 
 
-if(userId !== review.rows[0].user_id) {
-  return <p>404 not found</p>
-}
+  if(userId !== review.rows[0].user_id) {
+    return <p>404 not found</p>
+  }
 
   return (
     <div>

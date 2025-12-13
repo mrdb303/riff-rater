@@ -16,13 +16,14 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 
-export default async function EditComment({ params }) {
-    const { userId } = auth();
+export default async function EditComment(props) {
+  const params = await props.params;
+  const { userId } = auth();
 
   const comment =
     await sql`SELECT * FROM rr_comments WHERE id = ${params.commentid}`;
 
-   const profile = await sql`SELECT * FROM rr_profiles WHERE clerk_user_id = ${userId}`;
+  const profile = await sql`SELECT * FROM rr_profiles WHERE clerk_user_id = ${userId}`;
 
   async function handleEditComment(formData) {
     "use server";
@@ -34,7 +35,7 @@ export default async function EditComment({ params }) {
     revalidatePath(`/profiles/${params.profilesId}/reviews/${params.reviewid}`);
     redirect(`/profiles/${params.profilesId}/reviews/${params.reviewid}`);
   }
-  
+
   if(userId !== profile.rows[0].clerk_user_id) {
    return <p>404 not found</p>
   }

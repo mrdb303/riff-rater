@@ -27,7 +27,8 @@ export const metadata = {
 };
 
 
-export default async function ProfilePage({ params }) {
+export default async function ProfilePage(props) {
+  const params = await props.params;
   const {userId} = auth();
 
   // Fetch the user's profile
@@ -212,6 +213,5 @@ export default async function ProfilePage({ params }) {
   </div>
   </>
   )
-
 }
 
